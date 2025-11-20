@@ -9,6 +9,15 @@
 
 <button onclick="addRow()">ハンターを追加</button>
 <br><br>
+
+<!-- ▼ 追加：インポート／エクスポート -->
+<label for="importFile" class="importBtn">インポート</label>
+<input type="file" id="importFile" accept="application/json" onchange="importData(event)" style="display:none;">
+<!-- ▼ エクスポート -->
+<label class="importBtn" onclick="exportData()">エクスポート</label>
+<br><br>
+
+
 <script src="js/main.js"></script>
 <table id="hunterTable">
   <tr>

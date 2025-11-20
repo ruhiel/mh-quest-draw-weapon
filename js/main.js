@@ -146,3 +146,61 @@ function randomDraw() {
     });
   });
 }
+// エクスポート
+function exportData() {
+  const rows = document.querySelectorAll("#hunterTable tr");
+  const data = [];
+
+  rows.forEach((row, idx) => {
+    if (idx === 0) return; // ヘッダー除外
+    const name = row.querySelector("td.hunter_name input")?.value || "";
+
+    const checks = Array.from(row.querySelectorAll("td input[type=checkbox]"))
+      .map(chk => chk.checked);
+
+    data.push({
+      name: name,
+      weapons: checks
+    });
+  });
+
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "hunter_data.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+
+// インポート
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    const json = JSON.parse(e.target.result);
+
+    const table = document.getElementById("hunterTable");
+    table.querySelectorAll("tr:not(:first-child)").forEach(tr => tr.remove());
+
+    json.forEach(item => {
+      addRow();
+      const lastRow = table.lastElementChild;
+
+      lastRow.querySelector("td.hunter_name input").value = item.name;
+
+      const checks = lastRow.querySelectorAll("td input[type=checkbox]");
+      item.weapons.forEach((val, i) => {
+        if (checks[i]) checks[i].checked = val;
+      });
+    });
+
+    alert("インポート完了！");
+  };
+
+  reader.readAsText(file);
+}

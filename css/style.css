@@ -46,3 +46,15 @@ textarea {
 .delBtn:hover {
   background: #c0392b;
 }
+.importBtn {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #4CAF50;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.importBtn:hover {
+  background: #45A049;
+}

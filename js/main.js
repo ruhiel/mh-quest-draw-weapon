@@ -1,3 +1,10 @@
+// 画面表示時に4行追加
+window.onload = function () {
+  for (let i = 0; i < 4; i++) {
+    addRow();
+  }
+};
+
 function addRow() {
   const table = document.getElementById('hunterTable');
   const row = document.createElement('tr');
@@ -5,7 +12,7 @@ function addRow() {
   let html = `
     <td class="hunter_name">
       <button class="delBtn" onclick="deleteRow(this)">×</button>
-      <input type="text" placeholder="名前" style="width:200px;">
+      <input type="text" placeholder="ハンター名" style="width:200px;">
     </td>
   `;
 
@@ -21,18 +28,6 @@ function deleteRow(button) {
   const row = button.closest('tr');
   row.remove();
 }
-// 初期3行追加
-/*
-['あかみ', 'ゆっぴ', 'ルヒエル'].forEach(name => {
-  const table = document.getElementById('hunterTable');
-  const row = document.createElement('tr');
-  let html = `<td><input type="text" value="${name}"></td>`;
-  for (let i = 0; i < 14; i++) html += '<td><input type="checkbox"></td>';
-  row.innerHTML = html;
-  table.appendChild(row);
-});
-*/
-
 // ---- PT編成（武器は空欄） ----
 function createParty() {
   const rows = Array.from(document.querySelectorAll('#hunterTable tr')).slice(1);

@@ -43,7 +43,7 @@ function createParty() {
 
   // ランダムシャッフル
   for (let i = members.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(mt.random() * (i + 1));
     [members[i], members[j]] = [members[j], members[i]];
   }
 
@@ -88,7 +88,7 @@ function randomDraw() {
   }
 
   // モンスターをランダム選択
-  const monster = monsterList[Math.floor(Math.random() * monsterList.length)];
+  const monster = monsterList[Math.floor(mt.random() * monsterList.length)];
   document.getElementById("monsterDisplay").textContent = "【討伐対象】 " + monster;
 
   // 武器アイコン対応配列
@@ -137,7 +137,7 @@ function randomDraw() {
       }
 
       // ランダムで1つ選択してアイコン表示
-      const pick = weaponList[Math.floor(Math.random() * weaponList.length)];
+      const pick = weaponList[Math.floor(mt.random() * weaponList.length)];
       const img = document.createElement("img");
       img.src = weaponIcons[pick];
       img.alt = "武器";

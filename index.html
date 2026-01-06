@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>モンハンワイルズクエスト抽選ツール</title>
-<link rel="stylesheet" href="css/style.css" type="text/css">
+  <meta charset="UTF-8">
+  <title>モンハンワイルズクエスト抽選ツール</title>
+  <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
+
 <body>
 
-<button onclick="addRow()">ハンターを追加</button>
-<br><br>
+  <button onclick="addRow()">ハンターを追加</button>
+  <br><br>
 
-<!-- ▼ 追加：インポート／エクスポート -->
-<label for="importFile" class="importBtn">インポート</label>
-<input type="file" id="importFile" accept="application/json" onchange="importData(event)" style="display:none;">
-<!-- ▼ エクスポート -->
-<label class="importBtn" onclick="exportData()">エクスポート</label>
-<br><br>
+  <!-- ▼ 追加：インポート／エクスポート -->
+  <label for="importFile" class="importBtn">インポート</label>
+  <input type="file" id="importFile" accept="application/json" onchange="importData(event)" style="display:none;">
+  <!-- ▼ エクスポート -->
+  <label class="importBtn" onclick="exportData()">エクスポート</label>
+  <br><br>
 
-
-<script src="js/main.js"></script>
-<table id="hunterTable">
-  <tr>
-    <th class="weapon-header">ハンター名</th>
-    <th class="weapon-header"><img src="img/great-sword_ic.png" alt="大剣" width="30"/></th>
-    <th class="weapon-header"><img src="img/long-sword_ic.png" alt="太刀" width="30"/></th>
-    <th class="weapon-header"><img src="img/sword-and-shield_ic.png" alt="片手剣" width="30"/></th>
-    <th class="weapon-header"><img src="img/dual-blades_ic.png" alt="双剣" width="30"/></th>
-    <th class="weapon-header"><img src="img/hammer_ic.png" alt="ハンマー" width="30"/></th>
-    <th class="weapon-header"><img src="img/hunting-horn_ic.png" alt="狩猟笛" width="30"/></th>
-    <th class="weapon-header"><img src="img/lance_ic.png" alt="ランス" width="30"/></th>
-    <th class="weapon-header"><img src="img/gunlance_ic.png" alt="ガンランス" width="30"/></th>
-    <th class="weapon-header"><img src="img/switch-axe_ic.png" alt="スラアク" width="30"/></th>
-    <th class="weapon-header"><img src="img/charge-blade_ic.png" alt="チャアク" width="30"/></th>
-    <th class="weapon-header"><img src="img/insect-glaive_ic.png" alt="操虫棍" width="30"/></th>
-    <th class="weapon-header"><img src="img/light-bowgun_ic.png" alt="ライトボウガン" width="30"/></th>
-    <th class="weapon-header"><img src="img/heavy-bowgun_ic.png" alt="ヘビィボウガン" width="30"/></th>
-    <th class="weapon-header"><img src="img/bow_ic.png" alt="弓" width="30"/></th>
-  </tr>
-</table>
-<div class="section-title">モンスター一覧</div>
-<textarea>
+  <table id="hunterTable">
+    <tr>
+      <th class="weapon-header">ハンター名</th>
+      <th class="weapon-header"><img src="img/great-sword_ic.png" alt="大剣" width="30" /></th>
+      <th class="weapon-header"><img src="img/long-sword_ic.png" alt="太刀" width="30" /></th>
+      <th class="weapon-header"><img src="img/sword-and-shield_ic.png" alt="片手剣" width="30" /></th>
+      <th class="weapon-header"><img src="img/dual-blades_ic.png" alt="双剣" width="30" /></th>
+      <th class="weapon-header"><img src="img/hammer_ic.png" alt="ハンマー" width="30" /></th>
+      <th class="weapon-header"><img src="img/hunting-horn_ic.png" alt="狩猟笛" width="30" /></th>
+      <th class="weapon-header"><img src="img/lance_ic.png" alt="ランス" width="30" /></th>
+      <th class="weapon-header"><img src="img/gunlance_ic.png" alt="ガンランス" width="30" /></th>
+      <th class="weapon-header"><img src="img/switch-axe_ic.png" alt="スラアク" width="30" /></th>
+      <th class="weapon-header"><img src="img/charge-blade_ic.png" alt="チャアク" width="30" /></th>
+      <th class="weapon-header"><img src="img/insect-glaive_ic.png" alt="操虫棍" width="30" /></th>
+      <th class="weapon-header"><img src="img/light-bowgun_ic.png" alt="ライトボウガン" width="30" /></th>
+      <th class="weapon-header"><img src="img/heavy-bowgun_ic.png" alt="ヘビィボウガン" width="30" /></th>
+      <th class="weapon-header"><img src="img/bow_ic.png" alt="弓" width="30" /></th>
+    </tr>
+  </table>
+  <div class="section-title">モンスター一覧</div>
+  <textarea>
 ゴアマガラ
 歴戦王レ・ダウ
 歴戦王ウズトゥナ
 歴戦王ヌ・エグドラ
 零式オメガ
 </textarea>
-<br><br>
+  <br><br>
 
-<button onclick="createParty()">PT編成</button>
-<button onclick="randomDraw()">抽選ボタン</button>
-<br><br>
+  <button onclick="createParty()">PT編成</button>
+  <button onclick="randomDraw()">抽選ボタン</button>
+  <br><br>
 
-<div id="monsterDisplay" style="font-size:20px; font-weight:bold; margin-bottom:10px;"></div>
+  <div id="monsterDisplay" style="font-size:20px; font-weight:bold; margin-bottom:10px;"></div>
 
-<div id="partyResult"></div>
+  <div id="partyResult"></div>
+  <script src="js/mersenne-twister.js"></script>
+  <script src="js/main.js"></script>
 </body>
+
 </html>
